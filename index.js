@@ -5,6 +5,8 @@ const bodyParser = require("body-parser");
 const flash = require("connect-flash");
 const session = require("express-session");
 const cookieParser = require("cookie-parser");
+require('dotenv').config();
+
 const passport = require("./config/passport");
 const router = require("./routes");
 
