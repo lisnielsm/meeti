@@ -1,0 +1,101 @@
+<main class="contenedor contenedor-formularios">
+    <h1><%= nombrePagina %> </h1>
+
+    <form action="/nuevo-meeti" method="POST" class="default-form">
+        <legend>Sobre el Meeti</legend>
+
+        <div class="campo">
+			<label>Grupo</label>
+			<select name="grupoId">
+				<option value="" selected disabled>
+					-- Elige una grupo --
+				</option>
+				<% grupos.forEach(grupo => { %>
+                    <option value="<%= grupo.id %>">
+                        <%= grupo.nombre %>
+                    </option>
+				<% }) %>
+			</select>
+		</div>
+
+        <div class="campo">
+			<label>Título</label>
+			<input type="text" name="titulo" placeholder="Título Meeti" />
+		</div>
+
+        <div class="campo">
+			<label>Invitado</label>
+			<input type="text" name="invitado" placeholder="Nombre Invitado o Ponente (si aplica)" />
+		</div>
+
+        <div class="columnas-2 grid">
+            <div class="campo">
+                <label>Fecha</label>
+                <input type="date" name="fecha" placeholder="Fecha Meeti" />
+            </div>
+
+            <div class="campo">
+                <label>Hora</label>
+                <input type="time" name="hora" placeholder="Hora Meeti" />
+            </div>
+        </div>
+
+        <div class="campo">
+            <label>Cupo</label>
+            <input type="number" min="1" name="cupo" placeholder="Cupo Meeti (si aplica)" />
+        </div>
+
+        <div class="campo descripcion">
+			<label>Descripción</label>
+			<input type="hidden" name="descripcion" id="x" />
+			<div class="contenedor-editor">
+				<trix-editor input="x"></trix-editor>
+			</div>
+		</div>
+
+        <legend>Ubicación Meeti</legend>
+        
+        <div class="campo buscador">
+            <label>Coloca la dirección del Meeti</label>
+            <div class="contenedor-editor">
+                <input type="text" id="formbuscador" placeholder="Ubicación">
+                <small class="informacion mt-1">El asistente colocará una dirección estimada</small>
+            </div>
+        </div>
+
+        <div class="campo contenedor-editor">
+            <div id="mapa" style="width: 100%; height: 600px;"></div>
+            <p class="informacion">Mueve el Pin hacia el punto exacto en caso de ser necesario</p>
+        </div>
+        
+        <p class="informacion">Confirma que los siguientes campos sean correctos:</p>
+
+        <div class="campo">
+			<label>Dirección</label>
+			<input type="text" name="direccion" id="direccion" placeholder="Dirección" />
+		</div>
+
+        <div class="campo">
+			<label>Ciudad</label>
+			<input type="text" name="ciudad" id="ciudad" placeholder="Ciudad" />
+		</div>
+
+        <div class="campo">
+			<label>Estado</label>
+			<input type="text" name="estado" id="estado" placeholder="Estado" />
+		</div>
+
+        <div class="campo">
+			<label>País</label>
+			<input type="text" name="pais" id="pais" placeholder="País" />
+		</div>
+
+        <input type="hidden" name="lat" id="lat" />
+        <input type="hidden" name="lng" id="lng" />
+
+        <div class="campo enviar">
+			<input type="submit" value="Crear Meeti" class="btn btn-rosa" />
+		</div>
+
+    </form>
+</main>
